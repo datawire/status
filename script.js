@@ -6,10 +6,21 @@ $(document).ready(function () {
         }
     };
 
-    $.getJSON('https://api.github.com/repos/' + config.github.org + '/' + config.github.repo + '/issues?state=all').done(message);
+    var sinceDate = new Date();
+    sinceDate.setMonth(sinceDate.getMonth() - 1);
+    var listIssuesSince = sinceDate.toISOString();
+
+    $.getJSON('https://api.github.com/repos/' + config.github.org + '/' + config.github.repo + '/issues?state=all&since=' + listIssuesSince).done(message);
 
     function message(issues) {
+        var issuesCount = 0;
         issues.forEach(function (issue) {
+            if (issue.labels.length === 0) {
+                // Skip this issue if it has no labels.
+                // Everybody can open issues but only members of the org can set labels.
+                return;
+            }
+            issuesCount++;
             var status = issue.labels.reduce(function (status, label) {
                 if (/^status:/.test(label.name)) {
                     return label.name.replace('status:', '');
@@ -23,9 +34,6 @@ $(document).ready(function () {
             }).map(function (label) {
                 return label.name.replace('system:', '')
             });
-
-            console.log(status);
-            console.log(systems);
 
             if (issue.state === 'open') {
                 $('#panel').data('incident', 'true');
@@ -69,11 +77,15 @@ $(document).ready(function () {
             $('#incidents').append(html);
         });
 
+        if (issuesCount === 0) {
+            $('#incidents').html('No incidents since ' + datetime(listIssuesSince));
+        }
+
         function datetime(string) {
             var datetime = string.split('T');
             var date = datetime[0];
             var time = datetime[1].replace('Z', '');
-            return date + ' ' + time;
-        };
-    };
+            return date + ' ' + time + ' UTC';
+        }
+    }
 });
