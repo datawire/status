@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var config = {
         github: {
-            org: 'alexgervais',
+            org: 'datawire',
             repo: 'status'
         }
     };
