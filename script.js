@@ -10,9 +10,9 @@ $(document).ready(function () {
     sinceDate.setMonth(sinceDate.getMonth() - 1);
     var listIssuesSince = sinceDate.toISOString();
 
-    $.getJSON('https://api.github.com/repos/' + config.github.org + '/' + config.github.repo + '/issues?state=all&since=' + listIssuesSince).done(message);
+    $.getJSON('https://api.github.com/repos/' + config.github.org + '/' + config.github.repo + '/issues?state=all&since=' + listIssuesSince).done(render);
 
-    function message(issues) {
+    function render(issues) {
         var issuesCount = 0;
         issues.forEach(function (issue) {
             if (issue.labels.length === 0) {
@@ -78,14 +78,22 @@ $(document).ready(function () {
         });
 
         if (issuesCount === 0) {
-            $('#incidents').html('No incidents since ' + datetime(listIssuesSince));
+            $('#incidents').append(`
+<article class="timeline-entry">
+<div class="timeline-entry-inner">
+<div class="timeline-icon bg-success"><i class="entypo-feather"></i></div>
+<div class="timeline-label">
+<h2>All systems are operating normally</h2>
+<hr>
+<p><em>Since ${datetime(listIssuesSince)}<br/>
+</div>
+</div>
+</article>`);
         }
 
         function datetime(string) {
-            var datetime = string.split('T');
-            var date = datetime[0];
-            var time = datetime[1].replace('Z', '');
-            return date + ' ' + time + ' UTC';
+            var date = new Date(string);
+            return date.toDateString() + ' ' + date.toLocaleTimeString();
         }
     }
 });
