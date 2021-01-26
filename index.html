@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Service status">
     <meta name="robots" content="index, follow">
-    <title>Status</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20210126">
+    <title>Ambassador Status</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <header>
-        <h1>Status Page</h1>
+        <img src="ambassador-logo-white.svg"/>
     </header>
-    <div class="panel" id="panel">
-        <div class="panel-heading">
-            <h3 class="panel-title" id="paneltitle"></h3>
-        </div>
-    </div>
-    <h4 class="page-header">Incidents</h4>
-    <div class="timeline-centered" id="incidents"></div>
-    <script src="//code.jquery.com/jquery.min.js"></script>
+    <main class="container-fluid">
+        <h2>Incidents</h2>
+        <div class="timeline-centered" id="incidents"></div>
+    </main>
+    <script src="//code.jquery.com/jquery.min.js?v=20210126"></script>
     <script src="script.js"></script>
 </div>
 </body>

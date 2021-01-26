@@ -10,7 +10,7 @@ $(document).ready(function () {
     sinceDate.setMonth(sinceDate.getMonth() - 1);
     var listIssuesSince = sinceDate.toISOString();
 
-    $.getJSON('https://api.github.com/repos/' + config.github.org + '/' + config.github.repo + '/issues?state=all&since=' + listIssuesSince).done(render);
+    $.getJSON('https://api.github.com/repos/' + config.github.org + '/' + config.github.repo + '/issues?state=open&since=' + listIssuesSince).done(render);
 
     function render(issues) {
         var issuesCount = 0;
@@ -35,12 +35,6 @@ $(document).ready(function () {
                 return label.name.replace('system:', '')
             });
 
-            if (issue.state === 'open') {
-                $('#panel').data('incident', 'true');
-                $('#panel').attr('class', (status === 'operational' ? 'panel-success' : 'panel-warning'));
-                $('#paneltitle').html('<a href="#incidents">' + issue.title + '</a>');
-            }
-
             var html = '<article class="timeline-entry">\n';
             html += '<div class="timeline-entry-inner">\n';
 
@@ -64,7 +58,6 @@ $(document).ready(function () {
             }
 
             html += '<h2>' + issue.title + '</h2>\n';
-            html += '<hr>\n';
             html += '<p>' + issue.body + '</p>\n';
 
             if (issue.state === 'closed') {
@@ -84,8 +77,7 @@ $(document).ready(function () {
 <div class="timeline-icon bg-success"><i class="entypo-feather"></i></div>
 <div class="timeline-label">
 <h2>All systems are operating normally</h2>
-<hr>
-<p><em>Since ${datetime(listIssuesSince)}<br/>
+<p><a href="https://github.com/datawire/status/issues?q=is%3Aissue+is%3Aclosed">View past incidents</a><br/>
 </div>
 </div>
 </article>`);

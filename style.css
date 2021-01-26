@@ -1,4 +1,90 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+/*!* start basic reset *!*/
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+img,
+select,
+input {
+    margin: 0;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+body {
+    font-family: "Inter", Arial, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    --ambassador-primary-color: #AF5CF8;
+    --ambassador-primary-color-dark: #552C78;
+    --ambassador-primary-gray: #7C7C87;
+    --ambassador-text-color: #272733;
+    --ambassador-border-gray: #E1E9EA;
+    --ambassador-border-light-purple: #AF5CF8;
+    --ambassador-border-light-purple-20p-opacity: #EFDEFE;
+    --ambassador-purple-legacy: #5F3EFF;
+}
+
+a, a:visited {
+    transition: color 200ms linear 0ms;
+    color: var(--ambassador-primary-color-dark);
+    font-weight: normal;
+}
+
+a:hover {
+    color: var(--ambassador-primary-color);
+    cursor: pointer;
+}
+
+header {
+    height: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: var(--ambassador-primary-color);
+    padding: 5px 60px 5px 60px;
+    margin: 0 0 0 0;
+    align-items: center;
+}
+
+.container-fluid,
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+}
+
+main {
+    max-width: 1200px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    margin: 60px 8px 8px 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid;
+    border-color: var(--ambassador-border-gray);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
 
 .timeline-centered .timeline-entry .timeline-entry-inner:after,
 .timeline-centered .timeline-entry:after,
@@ -41,7 +127,8 @@ img {
 
 .timeline-centered {
     position: relative;
-    margin-bottom: 30px
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .timeline-centered:after,
@@ -54,8 +141,8 @@ img {
     content: '';
     position: absolute;
     display: block;
-    width: 4px;
-    background: #f5f5f6;
+    width: 2px;
+    background: var(--ambassador-border-light-purple-20p-opacity);
     top: 20px;
     bottom: 20px;
     margin-left: 30px
@@ -147,7 +234,7 @@ img {
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon {
     background: #fff;
-    color: #737881;
+    color: var(--ambassador-border-gray);
     display: block;
     width: 40px;
     height: 40px;
@@ -158,9 +245,9 @@ img {
     -moz-border-radius: 20px;
     border-radius: 20px;
     text-align: center;
-    -moz-box-shadow: 0 0 0 5px #f5f5f6;
-    -webkit-box-shadow: 0 0 0 5px #f5f5f6;
-    box-shadow: 0 0 0 5px #f5f5f6;
+    -moz-box-shadow: 0 0 0 5px var(--ambassador-border-gray);
+    -webkit-box-shadow: 0 0 0 5px var(--ambassador-border-gray);
+    box-shadow: 0 0 0 5px var(--ambassador-border-gray);
     line-height: 40px;
     font-size: 15px;
     float: left
@@ -172,12 +259,12 @@ img {
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-secondary {
-    background-color: #ee4749;
+    background-color: #F24E1E;
     color: #fff
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon.bg-success {
-    background-color: #00a651;
+    background-color: #00C05B;
     color: #fff
 }
 
@@ -223,13 +310,17 @@ img {
     margin-left: -9px
 }
 
+.date {
+    color: var(--ambassador-text-color);
+}
+
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2,
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {
-    color: #737881;
-    font-family: "Noto Sans", sans-serif;
+    color: var(--ambassador-text-color);
     font-size: 12px;
     margin: 0;
-    line-height: 1.428571429
+    line-height: 1.428571429;
+    padding: 0px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p+p {
