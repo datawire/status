@@ -26,12 +26,12 @@ body {
     font-family: "Inter", Arial, Verdana, sans-serif;
     font-style: normal;
     font-weight: normal;
-    --ambassador-primary-color: #AF5CF8;
-    --ambassador-primary-color-dark: #552C78;
+    --ambassador-primary-color: #795CEC;
+    --ambassador-primary-color-dark: #4527BD;
     --ambassador-primary-gray: #7C7C87;
     --ambassador-text-color: #272733;
     --ambassador-border-gray: #E1E9EA;
-    --ambassador-border-light-purple: #AF5CF8;
+    --ambassador-border-light-purple: #795CEC;
     --ambassador-border-light-purple-20p-opacity: #EFDEFE;
     --ambassador-purple-legacy: #5F3EFF;
 }
@@ -53,7 +53,7 @@ header {
     flex-wrap: nowrap;
     justify-content: space-between;
     background: var(--ambassador-primary-color);
-    padding: 5px 60px 5px 60px;
+    padding: 0 35px 0 35px;
     margin: 0 0 0 0;
     align-items: center;
 }
